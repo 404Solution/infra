@@ -34,3 +34,4 @@ mocks/
 .devcontainer.json
 .cursor/
 .localized
+repair.bash

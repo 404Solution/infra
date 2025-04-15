@@ -13,14 +13,15 @@ help:
 
 install:
 	@echo "Installing collection amazon.aws..."
-	ansible-galaxy collection install -r collections.yml
+	ansible-galaxy install -r collections/requirements.yml
+
 
 	pip3 install -r requirements.txt
 	pre-commit install
-	
+
 lint:
 	pre-commit run --all-files
-	
+
 clean:
 	rm -rf __pycache__ .cache .pytest_cache
 	find . -name '*.retry' -delete
