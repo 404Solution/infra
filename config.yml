@@ -1,0 +1,24 @@
+- name: Create rRol IAM SSM
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Create rol SSMRole
+      amazon.aws.iam_role:
+        name: SSMRole
+        state: present
+        assume_role_policy_document: >
+          {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Principal": {
+                  "Service": "ec2.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+              }
+            ]
+          }
+        managed_policy:
+          - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore

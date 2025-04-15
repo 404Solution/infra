@@ -1,0 +1,8 @@
+region        = "us-east-1"
+instance_type = "t2.micro"
+instance_name = "test-1"
+vpc_id        = "vpc-0ee46c443a427c1ad"
+subnet_id     = "subnet-0f018e0ee155f82e4"
+role          = "EC2SSMRole"
+profile       = "EC2SSMProfile"
+ami           = "ami-01b799c439fd5516a"
