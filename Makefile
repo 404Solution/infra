@@ -1,4 +1,4 @@
-APP_NAME = AWS Terragrunt Framework
+APP_NAME = IaC AWS Terragrunt Framework
 
 .PHONY: help install repo
 
