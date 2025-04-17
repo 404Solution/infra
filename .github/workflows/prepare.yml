@@ -27,11 +27,14 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
+    - name: Install Ansible and AWS deps
+      id: deps
       run: |
         python3 -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
+        which ansible-playbook
+        echo "VENV_PATH=$PWD/.venv" >> $GITHUB_OUTPUT
       working-directory: ${{ github.workspace }}
 
     - name: Configure AWS credentials
@@ -41,5 +44,8 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Run Ansible Playbook
+      env:
+        VIRTUAL_ENV: ${{ steps.deps.outputs.VENV_PATH }}
+        PATH: ${{ steps.deps.outputs.VENV_PATH }}/bin:${{ env.PATH }}
       run: |
-        ansible-playbook config.yml
+          ansible-playbook config.yml
