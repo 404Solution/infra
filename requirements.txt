@@ -1,4 +1,3 @@
 boto3
 ansible
 botocore
-amazon.aws
