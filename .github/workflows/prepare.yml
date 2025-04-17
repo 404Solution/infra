@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+      - feature/poc-demo
   workflow_dispatch:
 
 permissions:
